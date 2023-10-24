@@ -60,7 +60,7 @@ namespace Pract_4
         public Time() {; }
         public Time(int hours, int minutes, int seconds)
         {
-            if (hours > 23 || minutes > 59 || seconds > 59) 
+            if (hours > 23 || minutes > 59 || seconds > 59)
                 Console.WriteLine("Введено большое значение! Время будет переопределено!");
             Hours = hours;
             Minutes = minutes;
@@ -90,7 +90,5 @@ namespace Pract_4
             status[2] = Seconds < 10 ? -1 : 1;
             CheckTime(status);
         }
-
-
     }
 }
