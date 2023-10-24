@@ -66,31 +66,38 @@ else Console.WriteLine("Часов с таким временем нет!");
 
 var nightTime = from nTime in times
                 where nTime.Hours > -1 && nTime.Hours < 6
-                orderby nTime.Hours
+                orderby nTime.Hours, nTime.Minutes,nTime.Seconds
                 select nTime;
 Console.WriteLine("Ночные часы: ");
 foreach (var nH in nightTime) nH.PrintTime();
 
 var morningTime = from mTime in times
                   where mTime.Hours > 5 && mTime.Hours < 12
-                  orderby mTime.Hours
+                  orderby mTime.Hours, mTime.Minutes, mTime.Seconds
                   select mTime;
+morningTime.ThenBy(p => p.Minutes).ThenBy(p => p.Seconds);
 Console.WriteLine("Утренние часы: ");
 foreach (var mH in morningTime) mH.PrintTime();
 
 var dayTime = from dTime in times
                 where dTime.Hours > 11 && dTime.Hours < 18
-                orderby dTime.Hours
-                select dTime;
+                orderby dTime.Hours, dTime.Minutes, dTime.Seconds
+              select dTime;
+dayTime.ThenBy(p => p.Minutes).ThenBy(p => p.Seconds);
 Console.WriteLine("Дневные часы: ");
 foreach (var dH in dayTime) dH.PrintTime();
 
 var eveningTime = from eTime in times
                 where eTime.Hours > 17 && eTime.Hours < 24
-                orderby eTime.Hours
-                select eTime;
+                orderby eTime.Hours, eTime.Minutes, eTime.Seconds
+                  select eTime;
+eveningTime.ThenBy(p => p.Minutes).ThenBy(p => p.Seconds);
 Console.WriteLine("Вечерние часы: ");
 foreach (var eH in eveningTime) eH.PrintTime();
+
+var minHour = nightTime.First();
+Console.WriteLine("Минимальное время:");
+minHour.PrintTime();
 
 
 
