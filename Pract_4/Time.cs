@@ -14,7 +14,7 @@ namespace Pract_4
         int seconds = 0;
         List<int> objecList = new List<int>();
 
-        int Seconds
+        public int Seconds
         {
             get => seconds;
             set
@@ -27,7 +27,7 @@ namespace Pract_4
                 }
             }
         }
-        int Minutes
+        public int Minutes
         {
             get => minutes;
             set
@@ -41,21 +41,27 @@ namespace Pract_4
 
             }
         }
-        int Hours
+        public int Hours
         {
             get => hours;
             set => hours = Math.Abs((hours + value) % 24);
             
         }
 
-        
-
-        
-
+        public void MoveSeconds(int second) => Seconds = second;
+        public void MoveMinutes(int minute) => Minutes = minute;
+        public void MoveHours(int hour) => Hours = hour;
+        public void MoveTime(int second, int minute, int hour)
+        {
+            MoveSeconds(second);
+            MoveMinutes(minute);
+            MoveHours(hour);
+        }
         public Time() {; }
-
         public Time(int hours, int minutes, int seconds)
         {
+            if (hours > 23 || minutes > 59 || seconds > 59) 
+                Console.WriteLine("Введено большое значение! Время будет переопределено!");
             Hours = hours;
             Minutes = minutes;
             Seconds = seconds;
@@ -84,6 +90,7 @@ namespace Pract_4
             status[2] = Seconds < 10 ? -1 : 1;
             CheckTime(status);
         }
+
 
     }
 }

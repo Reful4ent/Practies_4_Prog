@@ -29,3 +29,5 @@ Time clock_1 = new Time(1,24,0);
 clock_1.PrintTime();
 Time clock_2 = new Time(0, 0, 10000);
 clock_2.PrintTime();
+clock_2.MoveSeconds(20);
+clock_2.PrintTime();
