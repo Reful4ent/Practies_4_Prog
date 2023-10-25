@@ -42,11 +42,14 @@ var rand= new Random();
 clock_2.PrintTime();
 clock_2.MoveSeconds(20);
 clock_2.PrintTime();
-
+clock_2.MoveTime(15, 2, 56);
 
 List<Time> times = new();
+times.Add(clock_2);
 times.Add(new Time(15, 15, 2));
 times.Add(new Time(10, 10, 45));
+
+//добавление в список 20 рандомных часов
 for(int i = 0; i < 20; i++)
     times.Add(new Time(rand.Next(24), rand.Next(61), rand.Next(61)));
 
