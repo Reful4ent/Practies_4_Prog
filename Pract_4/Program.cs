@@ -81,7 +81,6 @@ var morningTime = from mTime in times
                   where mTime.Hours > 5 && mTime.Hours < 12
                   orderby mTime.Hours, mTime.Minutes, mTime.Seconds
                   select mTime;
-morningTime.ThenBy(p => p.Minutes).ThenBy(p => p.Seconds);
 Console.WriteLine("Утренние часы: ");
 foreach (var mH in morningTime) mH.PrintTime();
 
@@ -89,7 +88,6 @@ var dayTime = from dTime in times
                 where dTime.Hours > 11 && dTime.Hours < 18
                 orderby dTime.Hours, dTime.Minutes, dTime.Seconds
               select dTime;
-dayTime.ThenBy(p => p.Minutes).ThenBy(p => p.Seconds);
 Console.WriteLine("Дневные часы: ");
 foreach (var dH in dayTime) dH.PrintTime();
 
@@ -97,23 +95,21 @@ var eveningTime = from eTime in times
                 where eTime.Hours > 17 && eTime.Hours < 24
                 orderby eTime.Hours, eTime.Minutes, eTime.Seconds
                   select eTime;
-eveningTime.ThenBy(p => p.Minutes).ThenBy(p => p.Seconds);
 Console.WriteLine("Вечерние часы: ");
 foreach (var eH in eveningTime) eH.PrintTime();
 
 
 //минимальное время
-var minHour = nightTime.First();
 Console.WriteLine("Минимальное время:");
-minHour.PrintTime(); 
+nightTime.First().PrintTime();
 
 //первое время, в котором часы и минуты совпадают
 var equalHourMinute = from eqHM in times
                       where eqHM.Hours==eqHM.Minutes
                       select eqHM;
-var firstEq = equalHourMinute.First();
 Console.WriteLine("Первое время с одинаковым часом и минутами:");
-firstEq.PrintTime();
+equalHourMinute.First().PrintTime();
+
 
 //упорядоченный список времен
 var sortTimes = from t in times

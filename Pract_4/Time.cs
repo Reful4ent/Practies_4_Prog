@@ -22,9 +22,7 @@ namespace Pract_4
                 int vSec = seconds + value;
                 seconds = Math.Abs((vSec) % 60);
                 if (vSec % 60 == 0 || vSec > 60)
-                {
                     Minutes = (vSec / 60);
-                }
             }
         }
         public int Minutes
@@ -35,10 +33,8 @@ namespace Pract_4
                 int vMin = minutes + value;
                 minutes = Math.Abs((vMin) % 60);
                 if (vMin % 60 == 0 || vMin > 60)
-                {
                     Hours = vMin / 60;
-                }
-
+               
             }
         }
         public int Hours
@@ -77,9 +73,9 @@ namespace Pract_4
         {
             AddToList();
             string time = null;
-            for(int i = 0; i < status.Length; i++)
-                time += status[i]==-1 ? ("0" + objecList[i]+":") : (objecList[i]+":");
-            time=time.TrimEnd(':');
+            for (int i = 0; i < status.Length; i++)
+                time += status[i] == -1 ? ("0" + objecList[i] + ":") : (objecList[i] + ":");
+            time = time.TrimEnd(':');
             Console.WriteLine(time);
         }
         public void PrintTime()
